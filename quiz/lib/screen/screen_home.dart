@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/model/model_quiz.dart';
+import 'package:quiz/screen/screen_quiz.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -6,6 +8,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Quiz> quizs = [
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -26,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Center(
               child: Image.asset(
                 'images/quiz.jpg',
-                width: width * 0.8,
+                // width: width * 0.8,
+                height: height * 0.35,
               ),
             ),
             Padding(
@@ -66,13 +87,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.deepPurple,
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: Text(
                       '지금 퀴즈 풀기',
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuizScreen(
+                            quizs: quizs,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -104,18 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
           Text(title),
         ],
       ),
-      // child: Row {
-      //   CrossAxisAlignment: CrossAxisAlignment.start,
-      //   children: <Widget>[
-      //     Icon(
-      //       Icons.check_box,
-      //       size: width * 0.04,
-      //     ),
-      //     Padding(
-      //       padding: EdgeInsets.only(right: width * 0.024),
-      //     ),
-      //   ]
-      // },
     );
   }
 }
