@@ -19,4 +19,4 @@ samples, guidance on mobile development, and a full API reference.
 ===================================================
 
 `flutter run --no-sound-null-safety`
-오류 나면 이거 적기
+오류 나면 터미널에서 실행
